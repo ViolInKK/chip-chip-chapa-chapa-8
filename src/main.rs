@@ -8,30 +8,6 @@ use sdl2::render::Canvas;
 
 use std::time::Instant;
 
-fn get_byte_0xF000(opcode: u16) -> u16{
-    (opcode & 0xF000) >> 12
-}
-
-fn get_byte_0x0F00(opcode: u16) -> u16{
-    (opcode & 0x0F00) >> 8
-}
-
-fn get_byte_0x00F0(opcode: u16) -> u16{
-    (opcode & 0x00F0) >> 4
-}
-
-fn get_byte_0x000F(opcode: u16) -> u16{
-    opcode & 0x000F
-}
-
-fn get_bytes_0x0FFF(opcode: u16) -> u16{
-    opcode & 0x0FFF
-}
-
-fn get_bytes_0x00FF(opcode: u16) -> u16{
-    opcode & 0x00FF
-}
-
 struct EmulatorConfig;
 impl EmulatorConfig {
     const SCREEN_WIDTH: u32 = 64;
@@ -60,6 +36,30 @@ impl ChipKeyboard{
     const CHIP_KEY_D: usize = 0xD;
     const CHIP_KEY_E: usize = 0xE;
     const CHIP_KEY_F: usize = 0xF;
+}
+
+fn get_byte_0xF000(opcode: u16) -> u16{
+    (opcode & 0xF000) >> 12
+}
+
+fn get_byte_0x0F00(opcode: u16) -> u16{
+    (opcode & 0x0F00) >> 8
+}
+
+fn get_byte_0x00F0(opcode: u16) -> u16{
+    (opcode & 0x00F0) >> 4
+}
+
+fn get_byte_0x000F(opcode: u16) -> u16{
+    opcode & 0x000F
+}
+
+fn get_bytes_0x0FFF(opcode: u16) -> u16{
+    opcode & 0x0FFF
+}
+
+fn get_bytes_0x00FF(opcode: u16) -> u16{
+    opcode & 0x00FF
 }
 
 struct ChipContext {
